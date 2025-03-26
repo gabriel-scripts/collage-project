@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { handleRegister } from './src/register.js';
+import { handleRegister } from './firebase/controllers/handleRegister.js';
 
 
 const app = express();
@@ -15,10 +15,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.json());
-
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));

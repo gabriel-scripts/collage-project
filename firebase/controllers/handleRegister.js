@@ -1,13 +1,10 @@
-import { db } from '../firebase/config/service_account.js';
+import { db } from '../config/service_account.js';
 import { collection, addDoc } from "firebase/firestore";
 
 import bcrypt from 'bcrypt';
 
 
 const handleRegister = async (req, res) => {
-    const test = req.body;
-    console.log(test);
-   
     const { username, email, password } = req.body; 
 
     try {
