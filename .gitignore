@@ -1,5 +1,5 @@
 .env
 
-config/service-account.js
+package-lock.json
 
 node_modules
