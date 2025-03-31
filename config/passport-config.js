@@ -18,7 +18,6 @@ passport.use(new LocalStrategy(
         return done(null, false, { message: 'Usuário não encontrado.' });
         
       }
-
       const user = querySnapshot.docs[0].data();
 
       const isPasswordValid = await bcrypt.compare(password, user.password);

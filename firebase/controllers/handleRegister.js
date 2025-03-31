@@ -1,27 +1,16 @@
 import { db } from '../config/service_account.js';
 import { collection, addDoc } from "firebase/firestore";
+import { handleInput } from './handlePassword.js';
+
 
 import bcrypt from 'bcrypt';
 
 
 const handleRegister = async (req, res) => {
-    console.log(req.body);
-    const { username, email, password } = req.body; 
+    const { username, email, password } = req.body;     
+    handleInput(password, username, email);
 
     try {
-        if (!email || !password || !username) {
-            return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
-        }
-        
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return res.status(400).json({ error: 'E-mail inválido.' });
-        }
-
-        if (password.length < 8) {
-            return res.status(400).json({ error: 'A senha deve ter pelo menos 8 caracteres.' });
-        }
-
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
