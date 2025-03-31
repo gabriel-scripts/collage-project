@@ -1,22 +1,22 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
+
 import bcrypt from 'bcrypt';
 import { collection, query, where, getDocs } from "firebase/firestore";
 
-import { db } from '../firebase/config/service_account'; 
-
+import { db } from '../firebase/config/service_account.js'; 
 
 passport.use(new LocalStrategy(
   { usernameField: 'email' }, 
-  async (email, password, done) => {
+  async   (email, password, done) => {
     try {
-
       const usersCollection = collection(db, "user");
       const q = query(usersCollection, where("email", "==", email));
       const querySnapshot = await getDocs(q);
 
       if (querySnapshot.empty) {
         return done(null, false, { message: 'Usuário não encontrado.' });
+        
       }
 
       const user = querySnapshot.docs[0].data();

@@ -3,6 +3,7 @@ function isLogged() {
       if (req.isAuthenticated && req.isAuthenticated()) {
         return next(); 
       }
+   
       res.redirect('/');
     };
   }

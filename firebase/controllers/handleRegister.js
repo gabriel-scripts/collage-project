@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 
 
 const handleRegister = async (req, res) => {
+    console.log(req.body);
     const { username, email, password } = req.body; 
 
     try {

@@ -8,13 +8,12 @@
 <body>
     <section class="home-section">
         <div>
-            <form action="" method="POST">
-                <input type="text" name="username" placeholder="Username">
-                <input type="password" name="password" placeholder="Password">
-                <input type="submit" value="Login">
-            </form>
-            <form action="registerPage" method="GET">
-                <input type="submit" value="Register">
+            <p>DIGTE O VALORES PARA O CÁLCULO DO METRO QUADRADO</p>
+            <form action="api/calc/metro" method="POST">
+                <input type="text" name="custo" placeholder="Custo">
+                <input type="password" name="maoDeObra" placeholder="Mão de obra">
+                <input type="password" name="area" placeholder="Área">
+                <input type="submit" value="calc">
             </form>
         </div>
     </section>

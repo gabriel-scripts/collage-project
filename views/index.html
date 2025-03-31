@@ -9,12 +9,18 @@
     <section class="login-section">
         <div>
             <form action="api/login" method="POST">
-                <input type="text" name="username" placeholder="Username">
+                <input type="text" name="email" placeholder="Email">
                 <input type="password" name="password" placeholder="Password">
                 <input type="submit" value="Login">
             </form>
+
             <form action="registerPage" method="GET">
                 <input type="submit" value="Register">
+            </form>
+
+            <form action="api/skip" method="POST">
+                <input type="hidden" name="skip" value="true">
+                <input type="submit" value="skip login" >
             </form>
         </div>
     </section>
