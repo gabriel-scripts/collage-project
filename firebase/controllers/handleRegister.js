@@ -11,8 +11,17 @@ const handleRegister = async (req, res) => {
         if (!email || !password || !username) {
             return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
         }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({ error: 'E-mail inválido.' });
+        }
 
-        const saltRounds = 10; // Define o número de rounds para o salt
+        if (password.length < 8) {
+            return res.status(400).json({ error: 'A senha deve ter pelo menos 8 caracteres.' });
+        }
+
+        const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
         const docRef = await addDoc(collection(db, "user"), {
@@ -20,7 +29,7 @@ const handleRegister = async (req, res) => {
             email: email,
             password: hashedPassword, 
             createdAt: new Date()
-          });
+        });
         
         res.status(201).json({ message: 'Usuário registrado com sucesso!' });
     } catch (error) {

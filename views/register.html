@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>register-user</title>
 </head>
 <body>
-    <section class="login-section">
-        <div>
-            <form action="api/login" method="POST">
+    <section class="register-section">
+        <div class="register-container" id="register-user">
+            <form action="api/register" method="POST">
                 <input type="text" name="username" placeholder="Username">
+                <input type="text" name="email" placeholder="Email">
                 <input type="password" name="password" placeholder="Password">
-                <input type="submit" value="Login">
-            </form>
-            <form action="registerPage" method="GET">
                 <input type="submit" value="Register">
-            </form>
+            </form>       
         </div>
     </section>
 </body>
